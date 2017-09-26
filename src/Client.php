@@ -42,18 +42,22 @@ class Client
     }
 
     /**
-     * @param string $query
+     * @param $query
      * @param int $size
      * @param int $page
      *
-     * @return \GuzzleHttp\Message\ResponseInterface
+     * @return mixed
      */
     public function search($query, $size = 15, $page = 1)
     {
-        return $this->getClient()->get('http://api.pexels.com/v1/search?'.http_build_query([
-            'query' => $query,
-            'per_page' => $size,
-            'page' => $page
-        ]));
+        return $this->getClient()
+            ->request('GET', 'http://api.pexels.com/v1/search', [
+                'query' => [
+                    'query' => $query,
+                    'per_page' => $size,
+                    'page' => $page
+                ]])
+            ->getBody()
+            ->getContents();
     }
 }
