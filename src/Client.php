@@ -4,6 +4,7 @@ namespace Glooby\Pexels;
 
 /**
  * @author Emil Kilhage <emil@glooby.com>
+ * @author Chiel Betting <c.betting@programic.nl>
  */
 class Client
 {
